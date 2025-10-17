@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusDocs - Collaborative Document Editing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            background: #f8f9fa;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        
+        .feature-card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .demo-section {
+            padding: 30px;
+        }
+        
+        .demo-section h2 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .demo-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        input[type="text"], textarea {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 14px;
+            min-width: 200px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: opacity 0.3s;
+        }
+        
+        button:hover {
+            opacity: 0.9;
+        }
+        
+        .response-area {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            min-height: 200px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .response-area pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            padding: 30px;
+            background: #f8f9fa;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .stat-card .number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .stat-card .label {
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .architecture {
+            padding: 30px;
+        }
+        
+        .architecture h2 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .architecture-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .architecture-list li {
+            padding: 15px;
+            margin-bottom: 10px;
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            border-radius: 4px;
+        }
+        
+        .architecture-list li strong {
+            color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1> NexusDocs</h1>
+            <p>Scalable, Fault-Tolerant, Collaborative Document Editing Platform</p>
+        </header>
+        
+        <div class="features">
+            <div class="feature-card">
+                <h3> Real-time Collaboration</h3>
+                <p>Multiple users can edit documents simultaneously with instant synchronization.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Scalable Architecture</h3>
+                <p>Horizontal scaling with load balancing and database sharding.</p>
+            </div>
+            <div class="feature-card">
+                <h3> Fault Tolerant</h3>
+                <p>Data replication across multiple nodes ensures high availability.</p>
+            </div>
+            <div class="feature-card">
+                <h3> Version Control</h3>
+                <p>Complete history tracking with ability to revert to any previous version.</p>
+            </div>
+            <div class="feature-card">
+                <h3> Access Control</h3>
+                <p>Fine-grained permissions for document owners, editors, and viewers.</p>
+            </div>
+            <div class="feature-card">
+                <h3> Cloud Native</h3>
+                <p>Built on distributed systems principles for cloud deployment.</p>
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>Interactive API Demo</h2>
+            
+            <div style="margin-bottom: 30px;">
+                <h3 style="color: #667eea; margin-bottom: 10px;">Create Document</h3>
+                <div class="demo-controls">
+                    <input type="text" id="createTitle" placeholder="Document Title">
+                    <input type="text" id="createUserId" placeholder="User ID">
+                    <button onclick="createDocument()">Create Document</button>
+                </div>
+                <textarea id="createContent" placeholder="Document Content" rows="3" style="width: 100%; margin-top: 10px;"></textarea>
+            </div>
+            
+            <div style="margin-bottom: 30px;">
+                <h3 style="color: #667eea; margin-bottom: 10px;">Get Document</h3>
+                <div class="demo-controls">
+                    <input type="text" id="getDocId" placeholder="Document ID">
+                    <button onclick="getDocument()">Get Document</button>
+                </div>
+            </div>
+            
+            <div style="margin-bottom: 30px;">
+                <h3 style="color: #667eea; margin-bottom: 10px;">Update Document</h3>
+                <div class="demo-controls">
+                    <input type="text" id="updateDocId" placeholder="Document ID">
+                    <input type="text" id="updateUserId" placeholder="User ID">
+                    <button onclick="updateDocument()">Update Document</button>
+                </div>
+                <textarea id="updateContent" placeholder="New Content" rows="3" style="width: 100%; margin-top: 10px;"></textarea>
+            </div>
+            
+            <div style="margin-bottom: 30px;">
+                <h3 style="color: #667eea; margin-bottom: 10px;">Get Versions</h3>
+                <div class="demo-controls">
+                    <input type="text" id="versionsDocId" placeholder="Document ID">
+                    <button onclick="getVersions()">Get Versions</button>
+                </div>
+            </div>
+            
+            <div class="response-area">
+                <pre id="response">API responses will appear here...</pre>
+            </div>
+        </div>
+        
+        <div class="stats" id="stats">
+            <div class="stat-card">
+                <div class="number" id="totalDocs">0</div>
+                <div class="label">Total Documents</div>
+            </div>
+            <div class="stat-card">
+                <div class="number" id="totalVersions">0</div>
+                <div class="label">Total Versions</div>
+            </div>
+            <div class="stat-card">
+                <div class="number" id="shardCount">4</div>
+                <div class="label">Database Shards</div>
+            </div>
+            <div class="stat-card">
+                <div class="number" id="replicationFactor">3</div>
+                <div class="label">Replication Factor</div>
+            </div>
+        </div>
+        
+        <div class="architecture">
+            <h2>Distributed Systems Features</h2>
+            <ul class="architecture-list">
+                <li><strong>Horizontal Scaling:</strong> System can scale by adding more application servers and database nodes</li>
+                <li><strong>Load Balancing:</strong> Requests distributed across multiple servers for optimal performance</li>
+                <li><strong>Database Sharding:</strong> Data partitioned using consistent hashing for distributed storage</li>
+                <li><strong>Data Replication:</strong> Each document replicated across multiple nodes (3x replication factor)</li>
+                <li><strong>Fault Tolerance:</strong> System continues operating even if individual nodes fail</li>
+                <li><strong>Version Control:</strong> Complete audit trail with point-in-time recovery capabilities</li>
+                <li><strong>Access Control:</strong> Role-based permissions for secure collaboration</li>
+                <li><strong>RESTful API:</strong> Stateless design enables easy horizontal scaling</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        function updateStats() {
+            fetch('/api/stats')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('totalDocs').textContent = data.total_documents;
+                    document.getElementById('totalVersions').textContent = data.total_versions;
+                    document.getElementById('shardCount').textContent = data.shard_count;
+                    document.getElementById('replicationFactor').textContent = data.replication_factor;
+                });
+        }
+        
+        function displayResponse(data) {
+            document.getElementById('response').textContent = JSON.stringify(data, null, 2);
+            updateStats();
+        }
+        
+        function createDocument() {
+            const title = document.getElementById('createTitle').value;
+            const userId = document.getElementById('createUserId').value;
+            const content = document.getElementById('createContent').value;
+            
+            fetch('/api/document', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({title, user_id: userId, content})
+            })
+            .then(response => response.json())
+            .then(data => displayResponse(data))
+            .catch(error => displayResponse({error: error.message}));
+        }
+        
+        function getDocument() {
+            const docId = document.getElementById('getDocId').value;
+            
+            fetch(`/api/document/${docId}`)
+                .then(response => response.json())
+                .then(data => displayResponse(data))
+                .catch(error => displayResponse({error: error.message}));
+        }
+        
+        function updateDocument() {
+            const docId = document.getElementById('updateDocId').value;
+            const userId = document.getElementById('updateUserId').value;
+            const content = document.getElementById('updateContent').value;
+            
+            fetch(`/api/document/${docId}`, {
+                method: 'PUT',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({user_id: userId, content})
+            })
+            .then(response => response.json())
+            .then(data => displayResponse(data))
+            .catch(error => displayResponse({error: error.message}));
+        }
+        
+        function getVersions() {
+            const docId = document.getElementById('versionsDocId').value;
+            
+            fetch(`/api/document/${docId}/versions`)
+                .then(response => response.json())
+                .then(data => displayResponse(data))
+                .catch(error => displayResponse({error: error.message}));
+        }
+        
+        // Update stats on page load
+        updateStats();
+        
+        // Refresh stats every 5 seconds
+        setInterval(updateStats, 5000);
+    </script>
+</body>
+</html>
+
